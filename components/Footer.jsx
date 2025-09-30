@@ -14,10 +14,10 @@ const Footer = () => {
 
     const products = [
         { label: "Post Ideas", url: "/new-post" },
-        { label: "Explore Ideas", url: "/" },
-        { label: "About Us", url: "/" },
-        { label: "Contact Us", url: "/" },
-        { label: "FAQs", url: "/" }
+        { label: "Explore Ideas", url: "/explore" },
+        { label: "About Us", url: "/about" },
+        { label: "Contact Us", url: "/contact" },
+        { label: "FAQs", url: "/faqs" }
     ]
     return (
         <main className='flex max-md:flex-col max-md:items-center justify-between lg:px-8 px-4 py-5 bg-gray-800 text-white max-md:space-y-5'>
@@ -25,14 +25,14 @@ const Footer = () => {
                 <Link href={"/"} className='flex items-center gap-2 z-40'>
                     <Image src={"/logo.png"} alt='logo' width={800} height={800} className="w-10 h-10" />
                     <span className='flex items-center gap-1'>
-                        <p className='md:text-xl text-green-800 font-bold'>Trader</p>
+                        <p className='md:text-xl text-teal-800 font-bold'>Trader</p>
                         <p className='md:text-xl text-red-600 font-bold'>Talks</p>
                     </span>
                 </Link>
                 <p></p>
 
                 <Link href={"/auth/signin"}>
-                    <div className='border border-white/50 rounded-full px-6 py-2 bg-green-500/50 hover:bg-red-600 transition-all duration-150'>
+                    <div className='border border-white/50 rounded-full px-6 py-2 bg-teal-500/50 hover:bg-red-600 transition-all duration-150'>
                         <p>Sign up for free</p>
                     </div>
                 </Link>

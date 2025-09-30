@@ -3,7 +3,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { FaRegUser } from "react-icons/fa6";
-import { TbWorldSearch } from "react-icons/tb";
 import { FcIdea } from "react-icons/fc";
 import { HiMiniBars3 } from "react-icons/hi2";
 import { IoCloseSharp } from "react-icons/io5";
@@ -15,9 +14,12 @@ import MenuItem from '@mui/material/MenuItem';
 
 
 
+
+
+
 const Navbar = () => {
   const [navOpen, setNavOpen] = useState(false)
-  const { data: session } = useSession ()
+  const { data: session } = useSession()
   console.log(session);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -29,7 +31,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className='sticky top-0 z-50 flex items-center justify-between shadow-md lg:px-8 px-4 py-3 bg-teal-100'>
+    <nav className='sticky top-0 z-50 flex items-center justify-between shadow-md lg:px-8 px-4 py-3 bg-white'>
       <Link href={"#"} className='flex items-center gap-2 z-40'>
         <Image src={"/logo.png"} alt='logo' width={800} height={800} className="w-10 h-10" />
         <span className='max-md:hidden flex items-center gap-1'>
@@ -38,17 +40,18 @@ const Navbar = () => {
         </span>
       </Link>
 
-      <div className='bg-green-300/40 shadow-lg px-8 py-1 rounded-full max-lg:hidden'>
+      <div className=' px-8 py-1 rounded-full max-lg:hidden'>
 
         <div className='lg:flex items-center gap-4 hidden'>
           <Link href={"/"} className='text-gray-800 hover:text-red-600 transition-all duration-150 text-lg hover:bg-green-800/25 px-2 rounded-lg'>Home</Link>
           <div className='border-r border-gray-800 h-5 w-fit'></div>
 
-          <Link href={"#"} className='flex items-center gap-1 text-gray-800 hover:text-red-600 transition-all duration-150 text-lg hover:bg-green-800/25 px-2 rounded-lg'>Contact us
-            <TbWorldSearch /></Link>
+          <Link href={"/explore"} className='flex items-center gap-1 text-gray-800 hover:text-red-600 transition-all duration-150 text-lg hover:bg-green-800/25 px-2 rounded-lg'>Explore Ideas
+            <FcIdea />
+          </Link>
           <div className='border-r border-gray-800 h-5 w-fit'></div>
 
-          <Link href={"#"} className='flex items-center gap-1 text-gray-800 hover:text-red-600 transition-all duration-150 text-lg hover:bg-green-800/25 px-2 rounded-lg'>FAQs
+          <Link href={"/faqs"} className='flex items-center gap-1 text-gray-800 hover:text-red-600 transition-all duration-150 text-lg hover:bg-green-800/25 px-2 rounded-lg'>FAQs
             <FcIdea /></Link>
           <div className='border-r border-gray-800 h-5 w-fit'></div>
 
@@ -59,18 +62,18 @@ const Navbar = () => {
 
       {/* mobile nav view */}
       <div className={`lg:hidden bg-teal-100 h-screen w-full absolute top-0 left-0 items-center flex flex-col gap-10 pt-20 ${navOpen ? "opacity-100" : "opacity-0"} `}>
-        <Link href={"/"} className='text-gray-800 hover:text-red-600 transition-all duration-150 text-lg hover:bg-green-800/25 px-2 rounded-lg'>Home</Link>
+        <Link onClick={() => setNavOpen(false)} href={"/"} className='text-gray-800 hover:text-red-600 transition-all duration-150 text-lg hover:bg-green-800/25 px-2 rounded-lg' >Home</Link>
 
 
-        <Link href={"#"} className='flex items-center gap-1 text-gray-800 hover:text-red-600 transition-all duration-150 text-lg hover:bg-green-800/25 px-2 rounded-lg'>Contact us
+        <Link onClick={() => setNavOpen(false)} href={"/explore"} className='flex items-center gap-1 text-gray-800 hover:text-red-600 transition-all duration-150 text-lg hover:bg-green-800/25 px-2 rounded-lg'>Explore Ideas
         </Link>
 
 
-        <Link href={"#"} className='flex items-center gap-1 text-gray-800 hover:text-red-600 transition-all duration-150 text-lg hover:bg-green-800/25 px-2 rounded-lg'>FAQs
+        <Link onClick={() => setNavOpen(false)} href={"#"} className='flex items-center gap-1 text-gray-800 hover:text-red-600 transition-all duration-150 text-lg hover:bg-green-800/25 px-2 rounded-lg'>FAQs
         </Link>
 
 
-        <Link href={"/about"} className='text-gray-800 hover:text-red-600 transition-all duration-150 text-lg hover:bg-green-800/25 px-2 rounded-lg'>About</Link>
+        <Link onClick={() => setNavOpen(false)} href={"/about"} className='text-gray-800 hover:text-red-600 transition-all duration-150 text-lg hover:bg-green-800/25 px-2 rounded-lg'>About</Link>
       </div>
 
       {
@@ -105,7 +108,7 @@ const Navbar = () => {
               <MenuItem onClick={handleClose}><Link href={"/explore"}>Explore Ideas</Link></MenuItem>
               <MenuItem onClick={handleClose}><button onClick={() => signOut()}>Sign Out</button></MenuItem>
             </Menu>
-          </div> : <Link href={"/auth/signin"} className='bg-green-800 rounded-full lg:px-5 px-3 lg:py-1 py-2 flex items-center gap-2 text-md text-white font-semibold hover:bg-red-600 transition-all duration-150 '>
+          </div> : <Link href={"/auth/signin"} className='bg-teal-800 rounded-full lg:px-5 px-3 lg:py-1 py-2 flex items-center gap-2 text-md text-white font-semibold hover:bg-red-600 transition-all duration-150 '>
             <p className='max-md:hidden'>Sign In</p>
             <FaRegUser />
           </Link>
