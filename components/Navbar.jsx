@@ -61,7 +61,7 @@ const Navbar = () => {
 
 
       {/* mobile nav view */}
-      <div className={`lg:hidden bg-teal-100 h-screen w-full absolute top-0 left-0 items-center flex flex-col gap-10 pt-20 ${navOpen ? "opacity-100" : "opacity-0"} `}>
+      <div className={`lg:hidden bg-teal-100 h-screen w-full absolute top-0 left-0 items-center flex flex-col gap-10 pt-20 ${navOpen ? "opacity-100" : "hidden"} `}>
         <Link onClick={() => setNavOpen(false)} href={"/"} className='text-gray-800 hover:text-red-600 transition-all duration-150 text-lg hover:bg-green-800/25 px-2 rounded-lg' >Home</Link>
 
 
@@ -108,7 +108,7 @@ const Navbar = () => {
               <MenuItem onClick={handleClose}><Link href={"/explore"}>Explore Ideas</Link></MenuItem>
               <MenuItem onClick={handleClose}><button onClick={() => signOut()}>Sign Out</button></MenuItem>
             </Menu>
-          </div> : <Link href={"/auth/signin"} className='bg-teal-800 rounded-full lg:px-5 px-3 lg:py-1 py-2 flex items-center gap-2 text-md text-white font-semibold hover:bg-red-600 transition-all duration-150 '>
+          </div> : <Link href={"/auth/signin"} className='bg-teal-800 rounded-full lg:px-5 px-3 lg:py-1 py-1 flex items-center gap-2 text-md text-white font-semibold hover:bg-red-600 transition-all duration-150 '>
             <p className='max-md:hidden'>Sign In</p>
             <FaRegUser />
           </Link>
