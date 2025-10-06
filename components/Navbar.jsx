@@ -51,8 +51,8 @@ const Navbar = () => {
           </Link>
           <div className='border-r border-gray-800 h-5 w-fit'></div>
 
-          <Link href={"/faqs"} className='flex items-center gap-1 text-gray-800 hover:text-red-600 transition-all duration-150 text-lg hover:bg-green-800/25 px-2 rounded-lg'>FAQs
-            <FcIdea /></Link>
+          <Link href={"/new-post"} className='flex items-center gap-1 text-gray-800 hover:text-red-600 transition-all duration-150 text-lg hover:bg-green-800/25 px-2 rounded-lg'>Post Idea
+            </Link>
           <div className='border-r border-gray-800 h-5 w-fit'></div>
 
           <Link href={"/about"} className='text-gray-800 hover:text-red-600 transition-all duration-150 text-lg hover:bg-green-800/25 px-2 rounded-lg'>About</Link>
@@ -108,8 +108,8 @@ const Navbar = () => {
               <MenuItem onClick={handleClose}><Link href={"/explore"}>Explore Ideas</Link></MenuItem>
               <MenuItem onClick={handleClose}><button onClick={() => signOut()}>Sign Out</button></MenuItem>
             </Menu>
-          </div> : <Link href={"/auth/signin"} className='bg-teal-800 rounded-full lg:px-5 px-3 lg:py-1 py-1 flex items-center gap-2 text-md text-white font-semibold hover:bg-red-600 transition-all duration-150 '>
-            <p className='max-md:hidden'>Sign In</p>
+          </div> : <Link href={"/auth/signin"} className='bg-teal-800 rounded-full lg:px-5 px-3 lg:py-1 py-1 flex items-center gap-2 text-md text-white hover:bg-red-600 transition-all duration-150 '>
+            <p className=''>Sign In</p>
             <FaRegUser />
           </Link>
       }

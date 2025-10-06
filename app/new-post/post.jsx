@@ -10,6 +10,7 @@ import Modal from '@mui/material/Modal';
 import { TbLoader3 } from "react-icons/tb";
 import { TiTick } from "react-icons/ti";
 import { FaPen } from "react-icons/fa";
+import Link from 'next/link';
 
 
 
@@ -100,13 +101,17 @@ const NewPost = ({ session }) => {
                                         <Field as="textarea" rows="3" name="idea" className="border p-2 rounded w-full border border-gray-200  rounded-sm bg-white" placeholder="Write your analysis..." ></Field>
                                         <ErrorMessage name='idea' component={"p"} className='text-xs font-semibold text-red-600'></ErrorMessage>
                                     </div>
+                                    <div className='flex gap-9'>
 
-                                    <button type='submit' className='bg-teal-800 text-white shadow-lg lg:w-full p-2 rounded-sm text-lg hover:bg-teal-700 hover:cursor-pointer transition-all duration-200 flex items-center justify-center' >
+                                    <button type='submit' className='bg-teal-800 text-white shadow-lg lg:w-full  p-2 px-3 rounded-sm text-lg hover:bg-teal-700 hover:cursor-pointer transition-all duration-200 flex items-center justify-center' >
                                         {
                                             processing ? <TbLoader3 className='animate-spin text-center text-white' />
                                                 : "Post"
                                         }
                                     </button>
+                                    <Link href={"/explore"} className='lg:hidden border hover:bg-gray-50/10 rounded-md font-semibold h-fit w-fit p-3'>View Post</Link>
+                                    </div>
+
                                 </Form>
                             </Formik>
                         </div>
