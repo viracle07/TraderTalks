@@ -1,14 +1,14 @@
+
+import SetLikes from "@/components/SetLikes";
 import { db } from "@/config/firebaseConfig";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc, increment, arrayUnion, arrayRemove } from "firebase/firestore";
 import Link from "next/link";
 import { BiArrowBack } from "react-icons/bi";
 
 
-export const fetchSinglePoem = async (id) => {
-    if (!id) {
-        return null
-    }
 
+export const fetchSinglePoem = async (id) => {
+    
     const docRef = doc(db, "trade", id);
     const docSnap = await getDoc(docRef);
 
@@ -20,7 +20,11 @@ export const fetchSinglePoem = async (id) => {
         console.log("No such document!");
     }
 }
+
+
 export default async function exploreDynamic({ params }) {
+    
+
     const poem = await fetchSinglePoem(params.id)
     console.log(poem);
 
@@ -34,12 +38,14 @@ export default async function exploreDynamic({ params }) {
                 <h1>{poem.author} </h1>
             </div>
 
-            <div>        
+            <div>
                 <p className="leading-8 font-bold">{poem.title} </p>
                 <p className="leading-8 text-sm">{poem.idea} </p>
             </div>
 
             <p className="text-xs text-gray-500">{poem.timestamp} </p>
+            <SetLikes id={poem.id} />
+
         </main>
     )
 }

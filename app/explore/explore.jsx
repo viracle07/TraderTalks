@@ -1,11 +1,11 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import { collection, getDocs, doc, deleteDoc, increment } from "firebase/firestore";
+import { collection, getDocs, doc, deleteDoc, updateDoc, increment } from "firebase/firestore";
 import { db } from '@/config/firebaseConfig';
 import { BiLoaderCircle } from "react-icons/bi";
 import Link from 'next/link';
 import { FaRegTrashCan } from "react-icons/fa6";
-import { IoMdHeartEmpty } from "react-icons/io";
+import SetLikes from '@/components/SetLikes';
 
 
 
@@ -14,18 +14,6 @@ import { IoMdHeartEmpty } from "react-icons/io";
 const Explore = ({ session }) => {
     const [ideas, setIdeas] = useState([])
     const [loading, setLoading] = useState(true)
-    const [likes, setLikes] = useState(0)
-    const [liked, setLiked] = useState(false)
-
-    const handleLikes =()=>{
-        if (liked >= 1){
-            setLikes ( likes -1)
-        }
-        else {setLikes(likes +1)}
-
-        setLiked(!liked)
-    }
-
 
 
     const fetchIdeas = async () => {
@@ -36,7 +24,7 @@ const Explore = ({ session }) => {
             console.log(doc.id, " => ", doc.data());
             const ideasObject = {
                 id: doc.id,
-                ...doc.data()
+                ...doc.data(),
             }
             ideasArray.push(ideasObject)
         });
@@ -46,6 +34,10 @@ const Explore = ({ session }) => {
 
     }
     useEffect(() => { fetchIdeas() }, [ideas])
+
+
+
+
 
     const handleDelete = async (id) => {
         await deleteDoc(doc(db, "trade", id));
@@ -93,18 +85,16 @@ const Explore = ({ session }) => {
                                                 </div>
 
                                                 <div className='flex items-center text-xs justify-between pt-5'>
-                                                    <p className='text-gray-600'>{idea.timestamp} </p>
+                                                    <span className='flex items-center gap-3'>
+                                                        <p className='text-gray-600'>{idea.timestamp} </p>
+                                                        <SetLikes id={idea.id} />
+                                                    
+
+                                                    </span>
 
                                                     <Link href={`/explore/${idea.id}`} className='underline' >Read more</Link>
+
                                                 </div>
-
-                                                
-
-                                                <button onClick={()=> handleLikes(idea.id)} className='flex items-center gap-4 pt-2' >
-                                                    <p className='text-xs'>{likes} </p>
-                                                    <IoMdHeartEmpty />
-
-                                                </button>
 
                                             </div>
                                         </div>

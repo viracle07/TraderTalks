@@ -40,7 +40,7 @@ const NewPost = ({ session }) => {
 
     const iv = {
         title: "",
-        idea: ""
+        idea: "",
     }
 
     const formValidation = Yup.object({
@@ -56,7 +56,8 @@ const NewPost = ({ session }) => {
                 img: session.user.image,
                 timestamp: new Date().toLocaleDateString(),
                 authorId: session?.user?.id,
-                ...values
+                ...values,
+                likes: 0,
             }
             console.log(miDetails);
             const docRef = await addDoc(collection(db, "trade"), miDetails)
