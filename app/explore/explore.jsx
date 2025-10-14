@@ -45,6 +45,10 @@ const Explore = ({ session }) => {
 
     return (
         <main className="min-h-dvh bg-teal-200">
+             {
+                session ?
+                    <h1 className='text-teal-800 font-semibold lg:text-3xl text-xl p-5 '>Welcome back, {session?.user?.name.split(" ")[0]} </h1> : null
+            }
             <div className='bg-white text-teal-800 space-y-2 text-center p-7'>
                 <h1 className='lg:text-3xl text-xl font-bold'>Explore Trader Talks</h1>
                 <p>Read insights and ideas from the trading community</p>
